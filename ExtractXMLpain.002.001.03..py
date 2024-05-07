@@ -23,7 +23,7 @@ for filename in os.listdir(folder_path):
     root = tree.getroot()
     transaction = {}
     
-    #Almacenar en variables los valores unicos de fichero
+    #Extract data using XPath expressions common as headers of data
     for tx_info in root.findall('.//{urn:iso:std:iso:20022:tech:xsd:pain.002.001.03}GrpHdr'):  
       CreDtTm = tx_info.find('.//{urn:iso:std:iso:20022:tech:xsd:pain.002.001.03}CreDtTm').text
       MsgId = tx_info.find('.//{urn:iso:std:iso:20022:tech:xsd:pain.002.001.03}MsgId').text
@@ -47,7 +47,7 @@ for filename in os.listdir(folder_path):
 
 
 
-  # Extract data using XPath expressions
+  # Extract data using XPath expressions the data in the branches
     for tx_info in root.findall('.//{urn:iso:std:iso:20022:tech:xsd:pain.002.001.03}TxInfAndSts'):
       transaction = {}
       transaction['MsgId'] = MsgId
